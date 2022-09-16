@@ -18,6 +18,7 @@ for i in changed_file_list:
 changed_file_list = [i for i in changed_file_list if i not in remove_dir_name_list ]
 print("CHANGED FILE LIST is After Ignored Dir name:", str(changed_file_list))
 
+
 unique_file_names=[]
 unique_file_name_list=[]
 for i in changed_file_list:
@@ -33,6 +34,7 @@ file_name_list=[]
 if len(unique_file_name_list) != 0:
     for file_name in unique_file_name_list:
         match = re.search("[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$", file_name)
+        print("FIlename",file_name)
         if match:
             print("valid Filename:",file_name)
         else:
@@ -46,4 +48,3 @@ if len(unique_file_name_list) != 0:
 else:
     print("WorkFLow RUnn Successfully")
     exit(0)
-
