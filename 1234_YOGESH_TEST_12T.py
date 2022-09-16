@@ -43,7 +43,9 @@ if len(unique_file_name_list) != 0:
             # print("invalid File Name: ", invalid_file_names)
             # os.environ["outputvar"] = file_name
             # print("Os env is :::",os.environ["outputvar"])
-            exit(1)
+    if invalid_file_names:
+        print("in invalid")
+        exit(1)
 else:
     print("WorkFLow RUnn Successfully")
     exit(0)
