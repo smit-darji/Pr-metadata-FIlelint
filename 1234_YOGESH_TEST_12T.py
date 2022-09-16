@@ -34,7 +34,6 @@ valid_file_name_list = []
 if len(unique_invalid_file_name_list) != 0:
     for file_name in unique_invalid_file_name_list:
         match = re.search("[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$", file_name)
-        print("FIlename",file_name)
         if match:
             valid_file_name_list.append(file_name)
         else:            
@@ -45,6 +44,7 @@ if len(unique_invalid_file_name_list) != 0:
             # print("Os env is :::",os.environ["outputvar"])
 
 print("Inalid Filename List :", invalid_file_name_list)
+print("Valid Filename List :", valid_file_name_list)
 # else:
 #     print("WorkFLow RUnn Successfully")
 #     exit(0)
