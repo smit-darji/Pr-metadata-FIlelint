@@ -18,6 +18,7 @@ for i in changed_file_list:
 changed_file_list = [i for i in changed_file_list if i not in remove_dir_name_list ]
 print("CHANGED FILE LIST is After Ignored Dir name:", str(changed_file_list))
 
+
 unique_file_names=[]
 unique_file_name_list=[]
 for i in changed_file_list:
