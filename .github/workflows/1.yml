@@ -39,7 +39,7 @@ jobs:
     name: Annotates pull request with metadata
     steps:
       - name: Annotate PR
-        uses: ./
+        uses: smit-darji/Pr-metadata-FIlelint@Master
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
