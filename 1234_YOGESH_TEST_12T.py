@@ -19,32 +19,33 @@ changed_file_list = [i for i in changed_file_list if i not in remove_dir_name_li
 print("CHANGED FILE LIST is After Ignored Dir name:", str(changed_file_list))
 
 unique_file_names=[]
-unique_file_name_list=[]
+unique_invalid_file_name_list=[]
 for i in changed_file_list:
     if (i in changed_file_list and len(changed_file_list)  != 0):
         unique_file_names = unique_file_names+changed_file_list        
         for i in unique_file_names:
-            unique_file_name_list.append(i.split('/')[-1])
+            unique_invalid_file_name_list.append(i.split('/')[-1])
     else:
         print("WorkFLow RUnn Successfully")
         exit(0)
 invalid_file_names=[]
-file_name_list=[]
-if len(unique_file_name_list) != 0:
-    for file_name in unique_file_name_list:
+invalid_file_name_list = []
+valid_file_name_list = []
+if len(unique_invalid_file_name_list) != 0:
+    for file_name in unique_invalid_file_name_list:
         match = re.search("[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$", file_name)
         print("FIlename",file_name)
         if match:
-            print("valid Filename:",file_name)
-        else:
-            print("Invalid FIle is :",file_name)
-            file_name_list.append(file_name)
-            invalid_file_names = invalid_file_names + file_name_list
+            valid_file_name_list.append(file_name)
+        else:            
+            invalid_file_name_list.append(file_name)
+            invalid_file_names = invalid_file_names + invalid_file_name_list
             # print("invalid File Name: ", invalid_file_names)
             # os.environ["outputvar"] = file_name
             # print("Os env is :::",os.environ["outputvar"])
-            exit(1)
-else:
-    print("WorkFLow RUnn Successfully")
-    exit(0)
+
+print("Inalid Filename List :", invalid_file_name_list)
+# else:
+#     print("WorkFLow RUnn Successfully")
+#     exit(0)
 
