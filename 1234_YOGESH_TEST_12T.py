@@ -2,36 +2,36 @@ from fileinput import filename
 import re
 import os
 from itertools import filterfalse
-CHANGED_FILES_ARR = (os.environ.get('CHANGED_FILES'))
-CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
-print("CHANGED_FILE_LIST :", CHANGED_FILE_LIST)
+changed_files = (os.environ.get('CHANGED_FILES'))
+changed_file_list = changed_files.split(" ")
+print("changed_file_list :", changed_file_list)
 file_names_to_ignore = ["README.md", ".gitignore", "dist", "images"]
-# CHANGED_FILE_LIST = ['./.github/workflows/1.yml', './.github/workflows/script/file_name_validation.sh', './.github/workflows/test.yml', './1234_YOGESH_TEST_12T.py', './ABCD/1234_YOGESH_TEST_12T.txt']
+# changed_file_list = ['./.github/workflows/1.yml', './.github/workflows/script/file_name_validation.sh', './.github/workflows/test.yml', './1234_YOGESH_TEST_12T.py', './ABCD/1234_YOGESH_TEST_12T.txt']
 directory_names_to_ignore_completely = [".github", "Terraform",".gitignore"]
 directory_names_to_ignore_list = []
 
-REMOVE_DIR_NAME_LIST=[]
-for i in CHANGED_FILE_LIST:
+remove_dir_name_list=[]
+for i in changed_file_list:
     for j in directory_names_to_ignore_completely:
         if (j in i):
-            REMOVE_DIR_NAME_LIST.append(i)
-CHANGED_FILE_LIST = [i for i in CHANGED_FILE_LIST if i not in REMOVE_DIR_NAME_LIST ]
-print("CHANGED FILE LIST is After Ignored Dir name:", str(CHANGED_FILE_LIST))
+            remove_dir_name_list.append(i)
+changed_file_list = [i for i in changed_file_list if i not in remove_dir_name_list ]
+print("CHANGED FILE LIST is After Ignored Dir name:", str(changed_file_list))
 
 unique_file_names=[]
-Unique_File_Name_Only=[]
-for i in CHANGED_FILE_LIST:
-    if (i in CHANGED_FILE_LIST and len(CHANGED_FILE_LIST)  != 0):
-        unique_file_names = unique_file_names+CHANGED_FILE_LIST        
+unique_file_name_list=[]
+for i in changed_file_list:
+    if (i in changed_file_list and len(changed_file_list)  != 0):
+        unique_file_names = unique_file_names+changed_file_list        
         for i in unique_file_names:
-            Unique_File_Name_Only.append(i.split('/')[-1])
+            unique_file_name_list.append(i.split('/')[-1])
     else:
         print("WorkFLow RUnn Successfully")
         exit(0)
 invalid_file_names=[]
 file_name_list=[]
-if len(Unique_File_Name_Only) != 0:
-    for file_name in Unique_File_Name_Only:
+if len(unique_file_name_list) != 0:
+    for file_name in unique_file_name_list:
         match = re.search("[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$", file_name)
         if match:
             print("valid Filename:",file_name)
