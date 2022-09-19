@@ -35,7 +35,7 @@ file_name_list=[]
 if len(unique_file_name_list) != 0:
     for file_name in unique_file_name_list:
         match = re.search("[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$", file_name)
-        print("FIlename",file_name)
+        print("Filename",file_name)
         if match:
              print("valid Filename:",file_name)
         else:
