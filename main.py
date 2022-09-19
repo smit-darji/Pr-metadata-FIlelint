@@ -4,8 +4,8 @@ from file_name_validator import remove_files_ofcompletely_ignored_directory, get
 from github_actions import post_pr_comment
 
 CHANGED_FILE_NAMES = (os.environ.get('CHANGED_FILES'))
-changed_file_list = CHANGED_FILE_NAMES.split(" ")
-print("changed_file_list :", changed_file_list)
+CHANGED_FILE_NAMES = CHANGED_FILE_NAMES.split(" ")
+print("changed_file_list :", CHANGED_FILE_NAMES)
 
 # FILE_NAMES_TO_IGNORE = (os.environ.get('FILE_NAMES_TO_IGNORE'))
 # DIRECTORY_NAMES_TO_COMPLETELY_IGNORE = (os.environ.get('DIRECTORY_NAMES_TO_COMPLETELY_IGNORE'))
