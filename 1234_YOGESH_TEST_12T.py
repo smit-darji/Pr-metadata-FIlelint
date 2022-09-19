@@ -2,11 +2,11 @@ from fileinput import filename
 import re
 import os
 from itertools import filterfalse
-# changed_files = (os.environ.get('CHANGED_FILES'))
-# changed_file_list = changed_files.split(" ")
-# print("changed_file_list :", changed_file_list)
+changed_files = (os.environ.get('CHANGED_FILES'))
+changed_file_list = changed_files.split(" ")
+print("changed_file_list :", changed_file_list)
 file_names_to_ignore = ["README.md", ".gitignore", "dist", "images"]
-changed_file_list = ['./.github/workflows/2.yml', './1234_YOGESH_TEST_12T.py', './QABCD/121212121212', './QABCD/sadasdadsasdada', './QABCD/sjdfhsafd']
+# changed_file_list = ['./.github/workflows/2.yml', './1234_YOGESH_TEST_12T.py', './QABCD/121212121212', './QABCD/sadasdadsasdada', './QABCD/sjdfhsafd']
 directory_names_to_ignore_completely = [".github", "Terraform",".gitignore"]
 directory_names_to_ignore_list = []
 
