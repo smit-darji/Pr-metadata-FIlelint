@@ -1,14 +1,14 @@
 import os
-from wsgiref.validate import validator
+from github import Github
 from file_name_validator import remove_files_ofcompletely_ignored_directory, get_invalid_file_names, get_invalid_directory_names
-import logging
+from github_actions import post_pr_comment
 
 CHANGED_FILE_NAMES = (os.environ.get('CHANGED_FILES'))
-print("CHANGED_FILE_NAMES",CHANGED_FILE_NAMES)
 # FILE_NAMES_TO_IGNORE = (os.environ.get('FILE_NAMES_TO_IGNORE'))
 # DIRECTORY_NAMES_TO_COMPLETELY_IGNORE = (os.environ.get('DIRECTORY_NAMES_TO_COMPLETELY_IGNORE'))
 # DIRECTORY_NAMES_TO_IGNORE = (os.environ.get('DIRECTORY_NAMES_TO_IGNORE'))
-# CHANGED_FILE_NAMES = ['./.github/workflows/2.yml', './1234_YOGESH_TEST_12T.py', './1234_YOGESH_TEST_12T/1234_YOGESH_TEST_12T', './1234_YOGESH_TEST_12T/1234_YOGESH_TEST_12T', './1234_YOGESH_TEST_12T/1234_YOGESH_TEST_12T']
+GITHUB_TOKEN = (os.environ.get('GITHUB_TOKEN'))
+# CHANGED_FILE_NAMES = ['./.github/workflows/1.yml', './.github/workflows/script/file_name_validation.sh', './.github/workflows/test.yml', './ABCD/xyz/1234_YOGESH_TEST_12T.py', './ABCD/xyz/1234_YOGESH_TEST_12T.txt']
 FILE_NAMES_TO_IGNORE = ["README.md", ".gitignore", "dist", "images"]
 DIRECTORY_NAMES_TO_COMPLETELY_IGNORE = [".github", "Terraform",".gitignore"]
 DIRECTORY_NAMES_TO_IGNORE = ['changes', 'terraform', 'terraform-master']
@@ -19,5 +19,9 @@ invalid_file_names = get_invalid_file_names(file_names_to_verify, FILE_NAMES_TO_
 
 invalid_directory_names = get_invalid_directory_names(file_names_to_verify, DIRECTORY_NAMES_TO_IGNORE)
 
-if not invalid_file_names or not invalid_directory_names:
-    print("hi")
+if not invalid_file_names and not invalid_directory_names:
+    exit(0)
+else:
+    github_client = Github(GITHUB_TOKEN)
+    post_pr_comment(github_client, invalid_file_names, invalid_directory_names)
+    
