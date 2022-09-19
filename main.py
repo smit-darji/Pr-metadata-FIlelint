@@ -23,7 +23,7 @@ invalid_file_names = get_invalid_file_names(file_names_to_verify, FILE_NAMES_TO_
 invalid_directory_names = get_invalid_directory_names(file_names_to_verify, DIRECTORY_NAMES_TO_IGNORE)
 
 if not invalid_file_names and not invalid_directory_names:
-    print(invalid_file_names)
+    print("Invalid FIle Name: ",invalid_file_names)
     exit(0)
 else:
     github_client = Github(GITHUB_TOKEN)
