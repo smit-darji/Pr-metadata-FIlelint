@@ -30,6 +30,7 @@ jobs:
         env:
           CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfiles }}
         run: |
+          echo ${{env.CHANGED_FILES}}
           pip install PyGithub
           python ./main.py
 
