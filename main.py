@@ -4,10 +4,11 @@ from file_name_validator import remove_files_ofcompletely_ignored_directory, get
 import logging
 
 CHANGED_FILE_NAMES = (os.environ.get('CHANGED_FILES'))
+print("CHANGED_FILE_NAMES",CHANGED_FILE_NAMES)
 # FILE_NAMES_TO_IGNORE = (os.environ.get('FILE_NAMES_TO_IGNORE'))
 # DIRECTORY_NAMES_TO_COMPLETELY_IGNORE = (os.environ.get('DIRECTORY_NAMES_TO_COMPLETELY_IGNORE'))
 # DIRECTORY_NAMES_TO_IGNORE = (os.environ.get('DIRECTORY_NAMES_TO_IGNORE'))
-# CHANGED_FILE_NAMES = ['./.github/workflows/1.yml', './.github/workflows/script/file_name_validation.sh', './.github/workflows/test.yml', './1234_YOGESH_TEST_12T.py/1234_YOGESH_TEST_12T.py/1234_YOGESH_TEST_12T.py', './1234_YOGESH_TEST_12T.py/1234_YOGESH_TEST_12T.py/1234_YOGESH_TEST_12Tsdsd.txt']
+# CHANGED_FILE_NAMES = ['./.github/workflows/2.yml', './1234_YOGESH_TEST_12T.py', './1234_YOGESH_TEST_12T/1234_YOGESH_TEST_12T', './1234_YOGESH_TEST_12T/1234_YOGESH_TEST_12T', './1234_YOGESH_TEST_12T/1234_YOGESH_TEST_12T']
 FILE_NAMES_TO_IGNORE = ["README.md", ".gitignore", "dist", "images"]
 DIRECTORY_NAMES_TO_COMPLETELY_IGNORE = [".github", "Terraform",".gitignore"]
 DIRECTORY_NAMES_TO_IGNORE = ['changes', 'terraform', 'terraform-master']
