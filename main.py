@@ -5,7 +5,7 @@ from github_actions import post_pr_comment
 
 CHANGED_FILE_NAMES = (os.environ.get('CHANGED_FILES'))
 CHANGED_FILE_NAMES = CHANGED_FILE_NAMES.split(" ")
-print("changed_file_list :", CHANGED_FILE_NAMES)
+# print("changed_file_list :", CHANGED_FILE_NAMES)
 
 # FILE_NAMES_TO_IGNORE = (os.environ.get('FILE_NAMES_TO_IGNORE'))
 # DIRECTORY_NAMES_TO_COMPLETELY_IGNORE = (os.environ.get('DIRECTORY_NAMES_TO_COMPLETELY_IGNORE'))
@@ -23,6 +23,7 @@ invalid_file_names = get_invalid_file_names(file_names_to_verify, FILE_NAMES_TO_
 invalid_directory_names = get_invalid_directory_names(file_names_to_verify, DIRECTORY_NAMES_TO_IGNORE)
 
 if not invalid_file_names and not invalid_directory_names:
+    print(invalid_file_names)
     exit(0)
 else:
     github_client = Github(GITHUB_TOKEN)
