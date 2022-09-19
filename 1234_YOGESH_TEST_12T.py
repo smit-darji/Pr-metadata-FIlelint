@@ -17,7 +17,6 @@ for i in changed_file_list:
         if j in tempData:
             remove_dir_name_list.append(i)
         
-print("CHANGED FILE LIST is After Ignored Dir name:", str(changed_file_list))
 print("remove_dir_name_list:", remove_dir_name_list)
 
 unique_file_names=[]
